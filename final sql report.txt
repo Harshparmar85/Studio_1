@@ -1,0 +1,185 @@
+create table passenger(
+passenger_ID integer primary key NOT NULL,
+passenger_name text NOY NULL,
+email Text NOT NULL,
+phone_number integer NOT NULL,
+DOB TEXT);
+
+insert into passenger(passenger_ID, passenger_name, email, phone_number, DOB) values (11, 'rajeev', 'rj@gamil.com', 0987654321, '2008-10-8');
+insert into passenger(passenger_ID, passenger_name, email, phone_number, DOB) values (12, 'komal', 'kl@gamil.com', 7987894321, '10/12/2022');
+insert into passenger(passenger_ID, passenger_name, email, phone_number, DOB) values (13, 'harsh', 'Ha@gamil.com', 69823254321, '2009/09/08');
+insert into passenger(passenger_ID, passenger_name, email, phone_number,DOB) values (14, 'smit', 'sm@gamil.com', 5985674321, '2008-10-8');
+insert into passenger(passenger_ID, passenger_name, email, phone_number, DOB) values (15, 'nikhil', 'ni@gamil.com', 4989804321, '21/09/2006');
+insert into passenger(passenger_ID, passenger_name, email, phone_number, DOB) values (16, 'waruni', 'wa@gamil.com', 3980784321, '31/07/2005');
+insert into passenger(passenger_ID, passenger_name, email, phone_number, DOB) values (17, 'ganeshan', 'ga@gamil.com', 2981234321, '30/06/2004');
+insert into passenger(passenger_ID, passenger_name, email, phone_number, DOB) values (18, 'satyam', 'sa@gamil.com', 19872344321, '16/05/2003');
+insert into passenger(passenger_ID, passenger_name, email, phone_number, DOB) values (19, 'vikas', 'vi@gamil.com', 8987789321, '18/04/2002');
+insert into passenger(passenger_ID, passenger_name, email, phone_number, DOB) values (20, 'abhijit', 'ab@gamil.com', 9876080321, '1/01/2001');
+
+create table ticket_payments(
+ticket_payment_ID integer primary key NOT NULL,
+passenger_ID integer NOT NULL,
+purchase_date text NOT NULL,
+time text NOT NULL,
+arrival_stop text,
+departure_stop text,
+amount real NOT NULL,
+foreign key(passenger_ID) references passenger(passenger_ID));
+
+
+insert into ticket_payments(ticket_payment_ID, passenger_ID, purchase_date, time, arrival_stop, departure_stop, amount) values (1301, 11, '10/12/2001', '1.24PM', 'Britomart', 'Mount Roskill', 13.99);
+insert into ticket_payments(ticket_payment_ID, passenger_ID, purchase_date, time, arrival_stop, departure_stop, amount) values (1302, 12, '29/2/2003', '1.00PM', 'New_lynn', 'Britomart', 9.99);
+insert into ticket_payments(ticket_payment_ID, passenger_ID, purchase_date, time, arrival_stop, departure_stop, amount) values (1303, 13, '19/4/2005', '2.24PM', 'Takanini', 'Mount Roskill', 12.99);
+insert into ticket_payments(ticket_payment_ID, passenger_ID, purchase_date, time, arrival_stop, departure_stop, amount) values (1304, 14, '9/6/2007', '3.30PM', 'Mount_Wellengtion', 'Britomart', 29.99);
+insert into ticket_payments(ticket_payment_ID, passenger_ID, purchase_date, time, arrival_stop, departure_stop, amount) values (1305, 15, '11/8/2009', '4.56PM', 'Northshore', 'Rosedale', 8.99);
+insert into ticket_payments(ticket_payment_ID, passenger_ID, purchase_date, time, arrival_stop, departure_stop, amount) values (1306, 16, '21/11/2008', '5.21PM', 'Northshore', 'Avondale', 22.49);
+insert into ticket_payments(ticket_payment_ID, passenger_ID, purchase_date, time, arrival_stop, departure_stop, amount) values (1307, 17, '31/9/2006', '6.40PM', 'Eden Garden', 'Mount Roskill', 21.99);
+insert into ticket_payments(ticket_payment_ID, passenger_ID, purchase_date, time, arrival_stop, departure_stop, amount) values (1308, 18, '20/7/2004', '7.51PM', 'Flat Bush', 'Hillsborough', 19.99);
+insert into ticket_payments(ticket_payment_ID, passenger_ID, purchase_date, time, arrival_stop, departure_stop, amount) values (1309, 19, '25/5/2002', '8.10PM', 'Britomart', 'Flat Bush', 18.49);
+insert into ticket_payments(ticket_payment_ID, passenger_ID, purchase_date, time, arrival_stop, departure_stop, amount) values (1310, 20, '15/3/2000', '9.15PM', 'New Lynn', 'Avondale', 8.99);
+
+Create table trains(
+train_id integer primary key NOT NULL,
+train_number text NOT NULL);
+
+insert into trains(train_ID, train_number) values (00061, 'AKL891');
+insert into trains(train_ID, train_number) values (00062, 'PCJ892');
+insert into trains(train_ID, train_number) values (00063, 'JFK893');
+insert into trains(train_ID, train_number) values (00064, 'FDD894');
+insert into trains(train_ID, train_number) values (00065, 'EFU895');
+insert into trains(train_ID, train_number) values (00066, 'EFI896');
+insert into trains(train_ID, train_number) values (00067, 'JEF897');
+insert into trains(train_ID, train_number) values (00068, 'KUJ898');
+insert into trains(train_ID, train_number) values (00069, 'UIU899');
+insert into trains(train_ID, train_number) values (00070, 'JIR900');
+
+create table schedual_description(
+schedule_ID integer primary key NOT NULL,
+passenger_ID integer NOT NULL,
+train_ID integer NOT NULL,
+foreign key(passenger_ID) references passenger(passenger_ID),
+foreign key(train_ID) references trains(train_ID));
+
+insert into  schedual_description(schedule_ID, passenger_ID, train_ID) values (101, 20, 00070);
+insert into  schedual_description(schedule_ID, passenger_ID, train_ID) values (111, 19, 00069);
+insert into  schedual_description(schedule_ID, passenger_ID, train_ID) values (121, 18, 00068);
+insert into  schedual_description(schedule_ID, passenger_ID, train_ID) values (131, 17, 00067);
+insert into  schedual_description(schedule_ID, passenger_ID, train_ID) values (141, 16, 00066);
+insert into  schedual_description(schedule_ID, passenger_ID, train_ID) values (151, 15, 00065);
+insert into  schedual_description(schedule_ID, passenger_ID, train_ID) values (161, 14, 00064);
+insert into  schedual_description(schedule_ID, passenger_ID, train_ID) values (171, 13, 00063);
+insert into  schedual_description(schedule_ID, passenger_ID, train_ID) values (181, 12, 00062);
+insert into  schedual_description(schedule_ID, passenger_ID, train_ID) values (191, 11, 00061);
+
+create table train_line(
+line_number integer primary key NOT NULL,
+line_name text NOT NULL);
+
+insert into train_line(line_number, line_name) values (81,'Central line');
+insert into train_line(line_number, line_name) values (82,'Northen line');
+insert into train_line(line_number, line_name) values (83,'Southern line');
+insert into train_line(line_number, line_name) values (84,'Western line');
+
+Create table train_station(
+station_ID integer primary key NOT NULL,
+station_name text NOT NULL,
+line_number integer NOT NULL,
+foreign key(line_number) references train_line(line_number));
+
+insert into train_station(station_ID, station_name, line_number) values (987654321,'Britomart', 81);
+insert into train_station(station_ID, station_name, line_number) values (123456789,'Avondale', 84);
+insert into train_station(station_ID, station_name, line_number) values (321654987,'Northshore', 82);
+insert into train_station(station_ID, station_name, line_number) values (987321765,'Hillborough', 83);
+insert into train_station(station_ID, station_name, line_number) values (235689721,'Mount Wellington', 81);
+insert into train_station(station_ID, station_name, line_number) values (112233441,'Mount Roskill',82);
+insert into train_station(station_ID, station_name, line_number) values (556677881,'Newlynn', 83);
+insert into train_station(station_ID, station_name, line_number) values (991122445,'Flat Bush', 84);
+insert into train_station(station_ID, station_name, line_number) values (986532147,'Eden Garden', 81);
+insert into train_station(station_ID, station_name, line_number) values (357912468,'Takanini', 83);
+insert into train_station(station_ID, station_name, line_number) values (864213579,'Rosedale', 83);
+
+
+create table time_schedual(
+passenger_ID integer NOT NULL,
+station_ID integer NOT NULL,
+departure_date_time Text NOT NULL,
+arrival_date_time Text NOT NULL,
+foreign key (passenger_ID) references passenger(passenger_ID),
+foreign key(station_ID) references train_station(station_ID));
+
+insert into time_schedual(passenger_ID, station_ID, departure_date_time, arrival_date_time) values (20, 556677881, '09/06/2023 9:30AM','09/06/2023 10:15AM');
+insert into time_schedual(passenger_ID, station_ID, departure_date_time, arrival_date_time) values (19, 864213579, '09/06/2023 6:30PM', '09/06/2023 7:19PM');
+insert into time_schedual(passenger_ID, station_ID, departure_date_time, arrival_date_time) values (18, 357912468, '11/06/2023 7:35AM', '11/06/2023 8:00AM');
+insert into time_schedual(passenger_ID, station_ID, departure_date_time, arrival_date_time) values (17, 986532147, '11/06/2023 2:30PM', '11/06/2023 3:15PM');
+insert into time_schedual(passenger_ID, station_ID, departure_date_time, arrival_date_time) values (16, 991122445, '12/06/2023 7:45PM', '12/06/2023 8:15PM');
+insert into time_schedual(passenger_ID, station_ID, departure_date_time, arrival_date_time) values (15, 112233441, '13/06/2023 9:30PM','13/06/2023 10:15PM');
+insert into time_schedual(passenger_ID, station_ID, departure_date_time, arrival_date_time) values (14, 235689721, '17/06/2023 2:30PM', '17/06/2023 3:15PM');
+insert into time_schedual(passenger_ID, station_ID, departure_date_time, arrival_date_time) values (13, 987321765, '19/06/2023 12:30PM','19/06/2023 1:25PM');
+insert into time_schedual(passenger_ID, station_ID, departure_date_time, arrival_date_time) values (12, 321654987, '19/06/2023 2:30PM', '19/06/2023 3:30PM');
+insert into time_schedual(passenger_ID, station_ID, departure_date_time, arrival_date_time) values (11, 987654321, '21/06/2023 5:30PM', '21/06/2023 6:00PM');
+
+create table train_mangement(
+train_id integer NOT NULL,
+station_id integer NOT NULL);
+
+insert into train_mangement(train_id, station_id) values (00070, 987654321);
+insert into train_mangement(train_id, station_id) values (00069, 123456789);
+insert into train_mangement(train_id, station_id) values (00068, 321654987);
+insert into train_mangement(train_id, station_id) values (00067, 987321765);
+insert into train_mangement(train_id, station_id) values (00066, 235689721);
+insert into train_mangement(train_id, station_id) values (00065, 112233441);
+insert into train_mangement(train_id, station_id) values (00064, 556677881);
+insert into train_mangement(train_id, station_id) values (00063, 991122445);
+insert into train_mangement(train_id, station_id) values (00062, 986532147);
+insert into train_mangement(train_id, station_id) values (00061, 864213579);
+
+
+
+  select * from passenger
+  where passenger_ID = 14;
+  
+  select time as "schedule",purchase_date as "DATE" from ticket_payments;
+  
+   select time as "schedule", purchase_date as DATE from ticket_payments
+    order by time desc, purchase_date asc;
+	
+	 select amount * 2, time from ticket_payments;
+	 
+	  select tm.train_id, tm.station_id,ts.station_name,tl.line_name
+      From train_mangement tm
+      Right outer join train_station ts on tm.station_id = ts.station_ID
+      left outer join train_line tl on ts.line_number = tl.line_number;
+	  
+	   delete from passenger where passenger_ID = 12 ;
+       select * from passenger;
+	   
+	                        
+      UPDATE passenger
+      SET email = 'rj@yahoo.com'
+      WHERE passenger_ID = 11;
+	  
+     UPDATE passenger
+    SET passenger_name = 'pratham'
+    WHERE passenger_ID = 11;
+	
+	select passenger_ID,passenger_name as "NAME", phone_number as "CONTACT DETAILS" from passenger
+	order by passenger_ID desc;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
